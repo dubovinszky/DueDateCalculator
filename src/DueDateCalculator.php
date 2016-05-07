@@ -22,14 +22,12 @@ class DueDateCalculator
     private function ValidateSubmitDate()
     {
         $submitHour = date('H', $this->submitTimestamp);
-        $submitDay = date('N', $this->submitTimestamp);
-
         if (($submitHour < self::WORKINGDAYSTART) || ($submitHour > self::WORKINGDAYEND))
         {
             throw new Exception('You can only report bugs in working hours!');
         }
 
-        if ($submitDay >= self::SATURDAY)
+        if (date('N', $this->submitTimestamp) >= self::SATURDAY)
         {
             throw new Exception('You can only report bugs on working days!');
         }

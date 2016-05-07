@@ -12,7 +12,15 @@ class DueDateCalculatorTest extends \PHPUnit_Framework_TestCase
         $this->validSubmitDate = date('Y-m-d H:i', mktime(12, 0, 0, 5, 2, 2016));
     }
 
-    public function testCalculateDueDateOutOfWorkingHours()
+    public function testCalculateDueDateOutBeforeWorkingHours()
+    {
+        $submitDate = date('Y-m-d H:i', mktime(7, 0, 0, 5, 2, 2016));
+        $this->setExpectedException('Exception');
+
+        $this->dueDateCalculator->CalculateDueDate($submitDate, 1);
+    }
+
+    public function testCalculateDueDateOutAfterWorkingHours()
     {
         $submitDate = date('Y-m-d H:i', mktime(19, 0, 0, 5, 2, 2016));
         $this->setExpectedException('Exception');
