@@ -1,0 +1,21 @@
+{
+    "name": "dubovinszky/DueDateCalculator",
+    "description": "This is a due date calculator",
+    "authors": [
+        {
+            "name": "Peter dubovinszky",
+            "email": "dubovinszky@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^5.4|^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~5.3"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    }
+}
