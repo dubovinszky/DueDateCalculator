@@ -57,13 +57,10 @@ class DueDateCalculator
 
     private function GetDueDate($turnaroundTimeInSeconds)
     {
-        $timeUntilEndOfDay = $this->GetTimeUntilEndOfDay();
-
-        while ($timeUntilEndOfDay < $turnaroundTimeInSeconds)
+        while (($timeUntilEndOfDay = $this->GetTimeUntilEndOfDay()) < $turnaroundTimeInSeconds)
         {
-            $timeUntilEndOfDay = $this->GetTimeUntilEndOfDay();
             $this->submitTimestamp = $this->GetNextWorkingDayStart();
-            $turnaroundTimeInSeconds = $turnaroundTimeInSeconds - $timeUntilEndOfDay;
+            $turnaroundTimeInSeconds -= $timeUntilEndOfDay;
         }
 
         return date('Y-m-d H:i',  + $this->submitTimestamp + $turnaroundTimeInSeconds);
