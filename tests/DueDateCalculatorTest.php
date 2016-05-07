@@ -60,4 +60,9 @@ class DueDateCalculatorTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals('2016-05-16 12:00', $this->dueDateCalculator->CalculateDueDate($this->validSubmitDate, 80));
     }
+
+    public function testCalculateDueDateWithtMoreWeeksTurn()
+    {
+        $this->assertEquals('2016-09-19 12:00', $this->dueDateCalculator->CalculateDueDate($this->validSubmitDate, 800));
+    }
 }
